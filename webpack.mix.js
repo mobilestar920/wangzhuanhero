@@ -12,4 +12,34 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .postCss('resources/css/basic.css', 'public/css', [
+        //
+    ]);
+
+mix.copy('resources/js/auth/login.js', 'public/js');
+
+// Style
+mix.copy('node_modules/@coreui/chartjs/dist/css/coreui-chartjs.css', 'public/css');
+mix.copy('node_modules/cropperjs/dist/cropper.css', 'public/css');
+
+// general scripts
+mix.copy('node_modules/@coreui/utils/dist/coreui-utils.js', 'public/js');
+mix.copy('node_modules/axios/dist/axios.min.js', 'public/js'); 
+//mix.copy('node_modules/pace-progress/pace.min.js', 'public/js');  
+mix.copy('node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js', 'public/js'); 
+mix.copy('node_modules/cropperjs/dist/cropper.js', 'public/js');
+
+//fonts
+mix.copy('node_modules/@coreui/icons/fonts', 'public/fonts');
+//icons
+mix.copy('node_modules/@coreui/icons/css/free.min.css', 'public/css');
+mix.copy('node_modules/@coreui/icons/css/brand.min.css', 'public/css');
+mix.copy('node_modules/@coreui/icons/css/flag.min.css', 'public/css');
+mix.copy('node_modules/@coreui/icons/svg/flag', 'public/svg/flag');
+
+mix.copy('node_modules/@coreui/icons/sprites/', 'public/icons/sprites');
+
+mix.copy('resources/assets', 'public/assets');
+
+mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js')
