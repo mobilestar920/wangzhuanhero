@@ -46,9 +46,9 @@ class CustomerLoginController extends Controller
             $verifyCode = VerifyCode::where('code', $verify_code)->first();
 
             if ($verifyCode == null) {
-                return response()->json(['success' => false, 'message' => 'You entered wrong code.']);
+                return response()->json(['success' => false, 'message' => '验证码不正确.']);
             } else if ($verifyCode->rSeller->is_blocked) {
-                return response()->json(['success' => false, 'message' => 'Code you used was banned by admin']);
+                return response()->json(['success' => false, 'message' => '验证码不正确']);
             }
 
             $availableDays = 0;
@@ -102,7 +102,7 @@ class CustomerLoginController extends Controller
             } else {
                 // If User doesn't exist
                 if ($user == null) {
-                    return response()->json(['success' => false, 'message' => 'Verification Code is not working for you.']);
+                    return response()->json(['success' => false, 'message' => '验证码不正确.']);
                 }
 
                 if ($password != $user->password) {
@@ -111,7 +111,7 @@ class CustomerLoginController extends Controller
 
                 // Verification does't assigned to user
                 if ($verifyCode->customer_id != $user->id) {
-                    return response()->json(['success' => false, 'message' => 'Verification Code is not working for you.']);
+                    return response()->json(['success' => false, 'message' => '验证码不正确.']);
                 }
 
                 // Verification code expired
@@ -139,7 +139,7 @@ class CustomerLoginController extends Controller
                 $codeUsing = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
                 // If user has verification code
                 if ($codeUsing != null) {
-                    return response()->json(['success' => false, 'message' => 'Please enter your verification code.']);
+                    return response()->json(['success' => false, 'message' => '请输入验证码.']);
                 }
 
                 // If user free and expired free trial

@@ -8,6 +8,7 @@ use App\AppScript;
 use App\Http\Controllers\Controller;
 use App\MyApps;
 use App\News;
+use App\VerifyCode;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -141,6 +142,8 @@ class AppListController extends Controller {
     }
 
     public function userAvailable(Request $request) {
+
+        return response()->json(['success' => true, 'message' => '使用可以。']);
         $user = auth()->user();
         $device_uuid = $request->device_uuid;
 
@@ -148,8 +151,27 @@ class AppListController extends Controller {
             return response()->json(['success' => false, 'message' => '你得账号已被其他用户使用。']);
         }
 
-        $expire_date = $user->expire_at;
-        $current = new Carbon;
+        $codeUsing = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
+        if ($codeUsing == null) {
+            $expire_date = $user->created_at->addDays(1);
+            if (Carbon::now() > $expire_date) {
+                return response()->json(['success' => false, 'message' => '使用期限已满。']);
+            } else {
+                return response()->json(['success' => true, 'message' => '使用可以。']);
+            }
+        }
+
+        $availableDays = 0;
+        if ($codeUsing->type == 0) {
+            $availableDays = 7;
+        } else if ($codeUsing->type == 1) {
+            $availableDays = 15;
+        } else {
+            $availableDays = 30;
+        }
+
+        $current = Carbon::now();
+        $expire_date = $codeUsing->updated_at->addDays($availableDays);
         if ($current > $expire_date) {
             return response()->json(['success' => false, 'message' => '使用期限已满。']);
         } else {
