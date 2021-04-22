@@ -10,7 +10,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "http://192.168.101.181:8001/sellers/block",
+            url: "http://121.40.156.156/sellers/block",
             dataType: "json",
             data: {is_block: blocked, user_id: user_id, _token: $('meta[name="csrf-token"]').attr('content')},
             success: function (response) {
