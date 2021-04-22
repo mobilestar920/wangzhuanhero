@@ -18,6 +18,19 @@ mix.js('resources/js/app.js', 'public/js')
     ]);
 
 mix.copy('resources/js/auth/login.js', 'public/js');
+mix.copy('resources/js/manager/apps.js', 'public/js/manager');
+mix.copy('resources/js/manager/customers.js', 'public/js/manager');
+mix.copy('resources/js/manager/myapps.js', 'public/js/manager');
+mix.copy('resources/js/manager/news.js', 'public/js/manager');
+mix.copy('resources/js/manager/scripts.js', 'public/js/manager');
+mix.copy('resources/js/manager/sellers.js', 'public/js/manager');
+mix.copy('resources/js/manager/sellings.js', 'public/js/manager');
+
+mix.copy('resources/js/seller/generation.js', 'public/js/seller');
+mix.copy('resources/js/seller/generation.js', 'public/js/seller');
+
+mix.copy('resources/js/jquery/jquery.dataTables.min.js', 'public/js/jquery');
+mix.copy('resources/css/jquery.dataTables.min.css', 'public/css');
 
 // Style
 mix.copy('node_modules/@coreui/chartjs/dist/css/coreui-chartjs.css', 'public/css');
