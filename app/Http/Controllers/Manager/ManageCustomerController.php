@@ -41,19 +41,19 @@ class ManageCustomerController extends Controller
             $data['created_at'] = date_format($user->created_at,"Y/m/d");
 
             $verification_code = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
-            $availableDays = 0;
-            if ($verification_code->type == 0) {
-                $availableDays = 7;
-            } else if ($verification_code->type == 1) {
-                $availableDays = 15;
-            } else {
-                $availableDays = 30;
-            }
-
             if ($verification_code == null) {
                 $expire_at = $user->created_at->addDays(1);
                 $data['expire_at'] = date_format($expire_at,"Y/m/d");
             } else {
+                $availableDays = 0;
+                if ($verification_code->type == 0) {
+                    $availableDays = 7;
+                } else if ($verification_code->type == 1) {
+                    $availableDays = 15;
+                } else {
+                    $availableDays = 30;
+                }
+
                 $expire_at = $verification_code->updated_at->addDays($availableDays);
                 $data['expire_at'] = date_format($expire_at,"Y/m/d");
             }
