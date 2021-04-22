@@ -44,6 +44,7 @@ class ManageCustomerController extends Controller
             if ($verification_code == null) {
                 $expire_at = $user->created_at->addDays(1);
                 $data['expire_at'] = date_format($expire_at,"Y/m/d");
+                $data['verification_code'] = "";
             } else {
                 $availableDays = 0;
                 if ($verification_code->type == 0) {
@@ -56,10 +57,9 @@ class ManageCustomerController extends Controller
 
                 $expire_at = $verification_code->updated_at->addDays($availableDays);
                 $data['expire_at'] = date_format($expire_at,"Y/m/d");
+                $data['verification_code'] = $verification_code->code;
             }
-            
-            $data['verification_code'] = $verification_code->code;
-            
+                        
             array_push($userList, $data);
         }
 
