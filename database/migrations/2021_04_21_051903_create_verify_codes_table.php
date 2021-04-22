@@ -18,7 +18,7 @@ class CreateVerifyCodesTable extends Migration
             $table->integer('seller_id')->nullable();
             $table->integer('customer_id')->nullable();
             $table->string('code', 10)->unique();
-            $table->integer('type');
+            $table->integer('type')->index();
             $table->integer('is_deleted')->default(0);
             $table->timestamps();
         });
