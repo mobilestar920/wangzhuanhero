@@ -46,10 +46,8 @@
                                 <div class="col-6">
                                     <button class="btn btn-primary px-4" style="color: #FDF600 !important;" type="submit">Login</button>
                                 </div>
+                            </div>
                         </form>
-                        <div class="col-6 text-right">
-                            <a href="{{ route('register') }}" class="btn btn-primary" style="color: #FDF600 !important;">Register</a>
-                        </div>
                     </div>
                 </div>
             </div>
