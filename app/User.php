@@ -36,4 +36,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function rVerificationCodes() {
+        return $this->hasMany(VerifyCode::class, 'seller_id');
+    }
 }

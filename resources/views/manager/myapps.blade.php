@@ -70,7 +70,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="app_name">{{ Lang::get('localizedStr.resource_app_name') }}</label>
-                            <input type="text" class="form-control" id="app_name" name="app_name" placeholder="App Name" value="小财神">
+                            <input type="text" class="form-control" id="app_name" name="app_name" placeholder="App Name" value="网赚英雄">
                         </div>
                         <div class="row" style="margin-bottom: 20px;">
                             <div class="col-md-6">
