@@ -22,8 +22,8 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables/datatables.min.css') }}"/>
   <link href="{{ asset('css/jquery.dataTables.min.css') }}"  rel="stylesheet">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/jquery/jquery.dataTables.min.js') }}"></script>
 
   
