@@ -61,9 +61,9 @@ class ManageCustomerController extends Controller
                 }
 
                 $expire_at = $verification_code->updated_at->addDays($availableDays);
-                $expire_at = new DateTime($expire_at);
-                $expire_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
-                $data['expire_at'] = $expire_at->format("Y/m/d H:i:s");
+                $expireDate = new DateTime($expire_at);
+                $expireDate->setTimezone(new DateTimeZone('Asia/Shanghai'));
+                $data['expire_at'] = $expireDate->format("Y/m/d H:i:s");
                 $data['verification_code'] = $verification_code->code;
             }
                         
