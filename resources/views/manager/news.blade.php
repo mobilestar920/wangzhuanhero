@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>News Management</h2>
+                        <h2>消息管理</h2>
                     </div>
                     <div class="card-body">
                         <form style="display: flex">

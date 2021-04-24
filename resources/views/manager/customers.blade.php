@@ -8,19 +8,19 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Customers Management</h2>
+                        <h2>用户管理</h2>
                     </div>
                     <div class="card-body">
                         <table id="customer_table" class="table table-responsive-sm table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>User Code</th>
-                                    <th>Phone</th>
-                                    <th>IMEI</th>
-                                    <th>Token</th>
-                                    <th>Start Date</th>
-                                    <th>Expire Date</th>
+                                    <th>注册号码</th>
+                                    <th>手机号吗</th>
+                                    <th>手机 IMEI</th>
+                                    <th>激活码</th>
+                                    <th>开始日期</th>
+                                    <th>结束日期</th>
                                 </tr>
                             </thead>
                             <tbody>

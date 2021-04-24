@@ -43,7 +43,7 @@ if (!function_exists('renderDropdown')) {
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-face"></use>
             </svg>
-            Sellers
+            销售管理
         </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -51,7 +51,7 @@ if (!function_exists('renderDropdown')) {
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-people"></use>
             </svg>
-            Customers
+            用户管理
         </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -59,7 +59,7 @@ if (!function_exists('renderDropdown')) {
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-applications"></use>
             </svg>
-            Apps
+            应用管理
         </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -67,7 +67,7 @@ if (!function_exists('renderDropdown')) {
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-description"></use>
             </svg>
-            Scripts
+            资源管理
         </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -75,7 +75,7 @@ if (!function_exists('renderDropdown')) {
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-chart-pie"></use>
             </svg>
-            Sell Status
+            销售状态
         </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -83,7 +83,7 @@ if (!function_exists('renderDropdown')) {
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-paw"></use>
             </svg>
-            My Apps
+            我的应用
         </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -91,7 +91,7 @@ if (!function_exists('renderDropdown')) {
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-envelope-open"></use>
             </svg>
-            News
+            消息管理
         </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -99,26 +99,26 @@ if (!function_exists('renderDropdown')) {
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-exit-to-app"></use>
             </svg>
-            Log out
+            退出
         </a>
     </li>
     @else
     <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="{{ url('/generation') }}">
             <i class="cib-opsgenie c-sidebar-nav-icon"></i>
-            Code Generator
+            激活码
         </a>
     </li>
     <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="{{ url('/seller/sellings') }}">
             <i class="cib-opsgenie c-sidebar-nav-icon"></i>
-            Selling Status
+            销售状态
         </a>
     </li>
     <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="{{ url('/logout') }}">
             <i class="cib-opsgenie c-sidebar-nav-icon"></i>
-            Log out
+            退出
         </a>
     </li>
     @endif

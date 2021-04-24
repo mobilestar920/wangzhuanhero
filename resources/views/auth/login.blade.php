@@ -19,7 +19,7 @@
                 <div class="card p-4" style="background-color: #2475C0;">
                     <div class="card-body">
                         <h1 style="color: #FDF600;">HERO</h1>
-                        <p class="text-muted" style="color: #FDF600 !important;">Sign In to your account</p>
+                        <p class="text-muted" style="color: #FDF600 !important;">用户账号登录</p>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="input-group mb-3">
@@ -30,7 +30,7 @@
                                         </svg>
                                     </span>
                                 </div>
-                                <input class="form-control" type="text" placeholder="ID / e-mail" name="username" required autofocus>
+                                <input class="form-control" type="text" placeholder="账号" name="username" required autofocus>
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend">
@@ -40,12 +40,10 @@
                                         </svg>
                                     </span>
                                 </div>
-                                <input class="form-control" type="password" placeholder="password" name="password" required>
+                                <input class="form-control" type="password" placeholder="密码" name="password" required>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <button class="btn btn-primary px-4" style="color: #FDF600 !important;" type="submit">Login</button>
-                                </div>
+                            <div style="display:flex;">
+                                <button class="btn btn-primary px-4" style="color: #FDF600 !important; margin:auto;" type="submit">登录</button>
                             </div>
                         </form>
                     </div>

@@ -8,22 +8,22 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Application Management</h2>
+                        <h2>应用管理</h2>
                     </div>
                     <div class="card-body">
                         <form style="display: flex">
                             <h4 class="c-grey-900 mB-20" style="flex: 1 1 auto;"></h4>
-                            <button id="btn_new_app" class="btn btn-danger" type="button" style="margin-bottom: 20px !important;">{{ Lang::get('localizedStr.app_new') }}</button>
+                            <button id="btn_new_app" class="btn btn-danger" type="button" style="margin-bottom: 20px !important;">新应用</button>
                         </form>
                         <table id="dataTable" class="table table-responsive-sm table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>{{ Lang::get('localizedStr.resource_app_name') }}</th>
-                                    <th>{{ Lang::get('localizedStr.app_package_name') }}</th>
-                                    <th>{{ Lang::get('localizedStr.app_version') }}</th>
-                                    <th>{{ Lang::get('localizedStr.app_update_date') }}</th>
-                                    <th>{{ Lang::get('localizedStr.user_action') }}</th>
+                                    <th>应用名</th>
+                                    <th>包名</th>
+                                    <th>版本</th>
+                                    <th>更新日期</th>
+                                    <th>过程</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,7 +63,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="bd p-15" style="margin: 20px;">
-                    <h5 class="m-0">{{ Lang::get('localizedStr.app_new') }}</h5>
+                    <h5 class="m-0">新应用</h5>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('new_app') }}" enctype="multipart/form-data">
@@ -73,23 +73,23 @@
                             <input type="text" class="form-control" id="app_id" name="app_id" placeholder="App ID">
                         </div>
                         <div class="form-group">
-                            <label for="app_name">{{ Lang::get('localizedStr.resource_app_name') }}</label>
+                            <label for="app_name">应用名</label>
                             <input type="text" class="form-control" id="app_name" name="app_name" placeholder="App Name">
                         </div>
                         <div class="form-group">
-                            <label for="package_name" class="fw-500">{{ Lang::get('localizedStr.app_package_name') }}</label>
+                            <label for="package_name" class="fw-500">包名</label>
                             <input type="text" class="form-control" id="package_name" name="package_name" placeholder="com.example.app">
                         </div>
                         <div class="form-group">
-                            <label for="app_version" class="fw-500">{{ Lang::get('localizedStr.app_version') }}</label>
+                            <label for="app_version" class="fw-500">版本</label>
                             <input type="text" class="form-control" id="app_version" name="app_version" placeholder="1.0.0">
                         </div>
                         <div class="form-group">
-                            <label for="download_link" class="fw-500">{{ Lang::get('localizedStr.app_download_link') }}</label>
+                            <label for="download_link" class="fw-500">下载链接</label>
                             <input type="text" class="form-control" id="download_link" name="download_link" placeholder="https://com.example.com/download/example.apk">
                         </div>
                         <div class="text-right">
-                            <button class="btn btn-primary cur-p" id="btn_add" type="submit">{{ Lang::get('localizedStr.app_update') }}</button>
+                            <button class="btn btn-primary cur-p" id="btn_add" type="submit">更新应用</button>
                         </div>
                     </form>
                 </div>
@@ -100,7 +100,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="bd p-15" style="margin: 20px;">
-                    <h5 class="m-0">{{ Lang::get('localizedStr.app_update') }}</h5>
+                    <h5 class="m-0">更新应用</h5>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('edit_app') }}" enctype="multipart/form-data">
@@ -110,23 +110,23 @@
                             <input type="text" class="form-control" id="update_app_id" name="update_app_id" placeholder="App ID">
                         </div>
                         <div class="form-group">
-                            <label for="app_name">{{ Lang::get('localizedStr.resource_app_name') }}</label>
+                            <label for="app_name">应用名</label>
                             <input type="text" class="form-control" id="update_app_name" name="update_app_name" placeholder="App Name">
                         </div>
                         <div class="form-group">
-                            <label for="package_name" class="fw-500">{{ Lang::get('localizedStr.app_package_name') }}</label>
+                            <label for="package_name" class="fw-500">包名</label>
                             <input type="text" class="form-control" id="update_package_name" name="update_package_name" placeholder="com.example.app">
                         </div>
                         <div class="form-group">
-                            <label for="app_version" class="fw-500">{{ Lang::get('localizedStr.app_version') }}</label>
+                            <label for="app_version" class="fw-500">版本</label>
                             <input type="text" class="form-control" id="update_app_version" name="update_app_version" placeholder="1.0.0">
                         </div>
                         <div class="form-group">
-                            <label for="download_link" class="fw-500">{{ Lang::get('localizedStr.app_download_link') }}</label>
+                            <label for="download_link" class="fw-500">下载链接</label>
                             <input type="text" class="form-control" id="update_download_link" name="update_download_link" placeholder="https://com.example.com/download/example.apk">
                         </div>
                         <div class="text-right">
-                            <button class="btn btn-primary cur-p" id="btn_update" type="submit">{{ Lang::get('localizedStr.app_update') }}</button>
+                            <button class="btn btn-primary cur-p" id="btn_update" type="submit">更新应用</button>
                         </div>
                     </form>
                 </div>

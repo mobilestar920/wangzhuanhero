@@ -8,26 +8,26 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>{{ Lang::get('localizedStr.title_selling_status') }}</h2>
+                        <h2>销售状态</h2>
                     </div>
                     <div class="card-body">
                         <table id="dataTable" class="table table-responsive-sm table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th>{{ Lang::get('localizedStr.code_type') }}</th>
-                                    <th>{{ Lang::get('localizedStr.total_amount') }}</th>
-                                    <th>{{ Lang::get('localizedStr.selled_amount') }}</th>
+                                    <th>类型</th>
+                                    <th>激活数</th>
+                                    <th>销售数量</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($codes as $type=>$code)
                                 <tr>
                                     @if ($type == 0) 
-                                    <td>{{ Lang::get('localizedStr.seven_days') }}</td>
+                                    <td>7日</td>
                                     @elseif ($type == 1)
-                                    <td>{{ Lang::get('localizedStr.half_month') }}</td>
+                                    <td>15日</td>
                                     @else
-                                    <td>{{ Lang::get('localizedStr.one_month') }}</td>
+                                    <td>30日</td>
                                     @endif
 
                                     <td>{{ $code['total'] }}</td>

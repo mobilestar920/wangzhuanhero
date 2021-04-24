@@ -13,17 +13,17 @@
                     <div class="card-body">
                         <form style="display: flex">
                             <h4 class="c-grey-900 mB-20" style="flex: 1 1 auto;"></h4>
-                            <button id="btn_new_version" class="btn btn-danger" type="button" style="margin-bottom: 20px !important;">{{ Lang::get('localizedStr.app_new_version') }}</button>
+                            <button id="btn_new_version" class="btn btn-danger" type="button" style="margin-bottom: 20px !important;">新版本</button>
                         </form>
                         <table id="dataTable" class="table table-responsive-sm table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>{{ Lang::get('localizedStr.resource_app_name') }}</th>
-                                    <th>{{ Lang::get('localizedStr.app_package_name') }}</th>
-                                    <th>{{ Lang::get('localizedStr.app_version') }}</th>
-                                    <th>{{ Lang::get('localizedStr.app_update_date') }}</th>
-                                    <th>{{ Lang::get('localizedStr.user_action') }}</th>
+                                    <th>应用名</th>
+                                    <th>包名</th>
+                                    <th>版本</th>
+                                    <th>更新日期</th>
+                                    <th>过程</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,27 +63,27 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="bd p-15" style="margin: 20px;">
-                    <h5 class="m-0">{{ Lang::get('localizedStr.app_new_version') }}</h5>
+                    <h5 class="m-0">新版本</h5>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('addNewVersion') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="app_name">{{ Lang::get('localizedStr.resource_app_name') }}</label>
+                            <label for="app_name">应用名</label>
                             <input type="text" class="form-control" id="app_name" name="app_name" placeholder="App Name" value="网赚英雄">
                         </div>
                         <div class="row" style="margin-bottom: 20px;">
                             <div class="col-md-6">
-                                <label for="package_name" class="fw-500">{{ Lang::get('localizedStr.app_package_name') }}</label>
+                                <label for="package_name" class="fw-500">包名</label>
                                 <input type="text" class="form-control" id="package_name" name="package_name" placeholder="com.example.app">
                             </div>
                             <div class="col-md-6">
-                                <label for="app_version" class="fw-500">{{ Lang::get('localizedStr.app_version') }}</label>
+                                <label for="app_version" class="fw-500">版本</label>
                                 <input type="text" class="form-control" id="app_version" name="app_version" placeholder="1.0.0">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="file">{{ Lang::get('localizedStr.app_upload_apk') }}</label>
+                            <label for="file">应用包</label>
                             <input type="file" class="form-control" style="border: 1px solid #00000000; padding: 0.375rem 0" id="file" name="file" multiple />
                         </div>
                         <div class="text-right">

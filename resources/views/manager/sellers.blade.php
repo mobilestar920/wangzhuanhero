@@ -8,17 +8,17 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Seller Management</h2>
+                        <h2>销售管理</h2>
                     </div>
                     <div class="card-body">
                         <table id="user_table" class="table table-responsive-sm table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Date Registered</th>
-                                    <th>Status</th>
+                                    <th>用户名</th>
+                                    <th>电子邮件</th>
+                                    <th>开始日期</th>
+                                    <th>账号状态</th>
                                 </tr>
                             </thead>
                             <tbody>
