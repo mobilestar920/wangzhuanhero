@@ -107,7 +107,7 @@
                             <input type="file" class="form-control" style="border: 1px solid #00000000; padding: 0.375rem 0" id="file" name="file" />
                         </div>
                         <div class="text-right">
-                            <button class="btn btn-primary cur-p" id="btn_add" type="submit">资源更新</button>
+                            <button class="btn btn-primary cur-p" id="btn_update" type="submit">资源更新</button>
                         </div>
                     </form>
                 </div>
