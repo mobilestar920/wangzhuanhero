@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use DateTime;
 use DateTimeZone;
 use Illuminate\Http\Request;
 
@@ -40,8 +41,9 @@ class ManageSellerController extends Controller
             $data['email'] = $user->email;
             $data['is_blocked'] = $user->is_blocked;
 
-            $user->created_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
-            $data['created_at'] =$user->created_at->format("Y/m/d H:i:s");
+            $createDate = new DateTime($user->created_at);
+            $createDate->setTimezone(new DateTimeZone('Asia/Shanghai'));
+            $data['created_at'] =$createDate->format("Y/m/d H:i:s");
             
             array_push($userList, $data);
         }

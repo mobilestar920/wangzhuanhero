@@ -6,6 +6,7 @@ use App\AppResources;
 use App\Apps;
 use App\AppScript;
 use App\Http\Controllers\Controller;
+use DateTime;
 use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -73,8 +74,9 @@ class ManageScriptController extends Controller
             $data['name'] = $resource->rApp->name;
             $data['type'] = $resource->rDeviceType->name;
 
-            $resource->updated_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
-            $data['updated_at'] = $resource->updated_at->format("Y/m/d H:i:s");
+            $updateDate = new DateTime($resource->updated_at);
+            $updateDate->setTimezone(new DateTimeZone('Asia/Shanghai'));
+            $data['updated_at'] = $updateDate->format("Y/m/d H:i:s");
 
             array_push($resourceList, $data);
             array_push($appIds, $resource->app_id);
