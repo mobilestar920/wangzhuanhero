@@ -26,7 +26,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>激活码</th>
-                                    <th>激活日期</th>
+                                    <th>产生日期</th>
                                 </tr>
                             </thead>
                             <tbody>
