@@ -48,7 +48,9 @@ class ManageCustomerController extends Controller
             $verification_code = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
             if ($verification_code == null) {
                 $expire_at = $user->created_at->addDays(1);
-                $data['expire_at'] = date_format($expire_at,"Y/m/d H:i:s");
+                $expireDate = new DateTime($expire_at);
+                $expireDate->setTimezone(new DateTimeZone('Asia/Shanghai'));
+                $data['expire_at'] = $expireDate->format("Y/m/d H:i:s");
                 $data['verification_code'] = "";
             } else {
                 $availableDays = 0;
