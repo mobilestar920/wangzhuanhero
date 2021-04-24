@@ -41,7 +41,7 @@ class GenerateCodeController extends Controller
             $data['code'] = $code->code;
 
             $code->created_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
-            $data['created_at'] = date_format($code->created_at,"Y/m/d H:i:s");
+            $data['created_at'] = $code->created_at->format("Y/m/d H:i:s");
             array_push($codeList, $data);
         }
 

@@ -39,7 +39,7 @@ class ManageAppController extends Controller
             $data['package_name'] = $app->package_name;
 
             $app->updated_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
-            $data['updated_at'] = date_format($app->updated_at,"Y-m- H:i:s");
+            $data['updated_at'] = $app->updated_at->format("Y/m/d H:i:s");
 
             array_push($appList, $data);
         }

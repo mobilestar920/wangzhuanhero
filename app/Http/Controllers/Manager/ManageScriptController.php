@@ -74,7 +74,7 @@ class ManageScriptController extends Controller
             $data['type'] = $resource->rDeviceType->name;
 
             $resource->updated_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
-            $data['updated_at'] = date_format($resource->updated_at, 'y/m/d H:i:s');
+            $data['updated_at'] = $resource->updated_at->format("Y/m/d H:i:s");
 
             array_push($resourceList, $data);
             array_push($appIds, $resource->app_id);

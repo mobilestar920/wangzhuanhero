@@ -41,7 +41,7 @@ class ManageCustomerController extends Controller
             $data['device_uuid'] = $user->device_uuid;
 
             $user->created_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
-            $data['created_at'] = date_format($user->created_at,"Y/m/d H:i:s");
+            $data['created_at'] = $user->created_at->format("Y/m/d H:i:s");
 
             $verification_code = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
             if ($verification_code == null) {
@@ -60,7 +60,7 @@ class ManageCustomerController extends Controller
 
                 $expire_at = $verification_code->updated_at->addDays($availableDays);
                 $expire_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
-                $data['expire_at'] = date_format($expire_at,"Y/m/d H:i:s");
+                $data['expire_at'] = $expire_at->format("Y/m/d H:i:s");
                 $data['verification_code'] = $verification_code->code;
             }
                         
