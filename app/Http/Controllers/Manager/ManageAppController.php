@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use App\Apps;
 use App\Http\Controllers\Controller;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -36,7 +37,9 @@ class ManageAppController extends Controller
             $data['name'] = $app->name;
             $data['version'] = $app->version;
             $data['package_name'] = $app->package_name;
-            $data['updated_at'] = date_format($app->updated_at,"Y-m-d");
+
+            $app->updated_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
+            $data['updated_at'] = date_format($app->updated_at,"Y-m- H:i:s");
 
             array_push($appList, $data);
         }

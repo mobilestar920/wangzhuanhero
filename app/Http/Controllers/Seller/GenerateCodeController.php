@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Seller;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\VerifyCode;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +39,8 @@ class GenerateCodeController extends Controller
         foreach ($codes as $code) {
             $data = [];
             $data['code'] = $code->code;
+
+            $code->created_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
             $data['created_at'] = date_format($code->created_at,"Y/m/d H:i:s");
             array_push($codeList, $data);
         }

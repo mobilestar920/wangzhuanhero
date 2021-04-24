@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Customer;
 use App\Http\Controllers\Controller;
 use App\VerifyCode;
+use DateTimeZone;
 use Illuminate\Http\Request;
 
 class ManageCustomerController extends Controller
@@ -38,6 +39,8 @@ class ManageCustomerController extends Controller
             $data['code'] = $user->code;
             $data['phone'] = $user->phone;
             $data['device_uuid'] = $user->device_uuid;
+
+            $user->created_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
             $data['created_at'] = date_format($user->created_at,"Y/m/d H:i:s");
 
             $verification_code = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
@@ -56,6 +59,7 @@ class ManageCustomerController extends Controller
                 }
 
                 $expire_at = $verification_code->updated_at->addDays($availableDays);
+                $expire_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
                 $data['expire_at'] = date_format($expire_at,"Y/m/d H:i:s");
                 $data['verification_code'] = $verification_code->code;
             }

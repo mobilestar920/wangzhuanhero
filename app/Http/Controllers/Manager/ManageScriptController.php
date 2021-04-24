@@ -6,6 +6,7 @@ use App\AppResources;
 use App\Apps;
 use App\AppScript;
 use App\Http\Controllers\Controller;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -71,7 +72,9 @@ class ManageScriptController extends Controller
             $data['app_id'] = $resource->app_id;
             $data['name'] = $resource->rApp->name;
             $data['type'] = $resource->rDeviceType->name;
-            $data['updated_at'] = $resource->updated_at;
+
+            $resource->updated_at->setTimezone(new DateTimeZone('Asia/Shanghai'));
+            $data['updated_at'] = date_format($resource->updated_at, 'y/m/d H:i:s');
 
             array_push($resourceList, $data);
             array_push($appIds, $resource->app_id);
@@ -100,7 +103,7 @@ class ManageScriptController extends Controller
 
         $filename = $app_id;
 
-        $file = $request->file('file');
+        $file = $request->file('new_file');
 
         // Save File To Public Storage
         $tempLocation = storage_path().'/'.'app/public/temp';

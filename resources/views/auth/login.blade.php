@@ -18,8 +18,8 @@
             <div class="card-group">
                 <div class="card p-4" style="background-color: #2475C0;">
                     <div class="card-body">
-                        <h1 style="color: #FDF600;">HERO</h1>
-                        <p class="text-muted" style="color: #FDF600 !important;">用户账号登录</p>
+                        <h1 style="color: #FDF600; text-align: center;">HERO</h1>
+                        <p class="text-muted" style="color: #FDF600 !important; text-align: center;">用户账号登录</p>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="input-group mb-3">
