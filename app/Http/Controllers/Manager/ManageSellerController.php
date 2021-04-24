@@ -38,7 +38,7 @@ class ManageSellerController extends Controller
             $data['username'] = $user->username;
             $data['email'] = $user->email;
             $data['is_blocked'] = $user->is_blocked;
-            $data['created_at'] =date_format($user->created_at,"Y/m/d");
+            $data['created_at'] =date_format($user->created_at,"Y/m/d H:i:s");
             
             array_push($userList, $data);
         }

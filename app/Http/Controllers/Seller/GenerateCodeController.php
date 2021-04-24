@@ -38,7 +38,7 @@ class GenerateCodeController extends Controller
         foreach ($codes as $code) {
             $data = [];
             $data['code'] = $code->code;
-            $data['created_at'] = date_format($code->created_at,"Y/m/d");
+            $data['created_at'] = date_format($code->created_at,"Y/m/d H:i:s");
             array_push($codeList, $data);
         }
 

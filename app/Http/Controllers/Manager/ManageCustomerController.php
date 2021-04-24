@@ -38,12 +38,12 @@ class ManageCustomerController extends Controller
             $data['code'] = $user->code;
             $data['phone'] = $user->phone;
             $data['device_uuid'] = $user->device_uuid;
-            $data['created_at'] = date_format($user->created_at,"Y/m/d");
+            $data['created_at'] = date_format($user->created_at,"Y/m/d H:i:s");
 
             $verification_code = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
             if ($verification_code == null) {
                 $expire_at = $user->created_at->addDays(1);
-                $data['expire_at'] = date_format($expire_at,"Y/m/d");
+                $data['expire_at'] = date_format($expire_at,"Y/m/d H:i:s");
                 $data['verification_code'] = "";
             } else {
                 $availableDays = 0;
@@ -56,7 +56,7 @@ class ManageCustomerController extends Controller
                 }
 
                 $expire_at = $verification_code->updated_at->addDays($availableDays);
-                $data['expire_at'] = date_format($expire_at,"Y/m/d");
+                $data['expire_at'] = date_format($expire_at,"Y/m/d H:i:s");
                 $data['verification_code'] = $verification_code->code;
             }
                         
