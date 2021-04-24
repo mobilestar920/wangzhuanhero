@@ -51,7 +51,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="bd p-15" style="margin: 20px;">
-                    <h5 class="m-0">激活数</h5>
+                    <h5 class="m-0">激活产生</h5>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('codeGenerate') }}" enctype="multipart/form-data">
