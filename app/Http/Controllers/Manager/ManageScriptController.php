@@ -32,6 +32,11 @@ class ManageScriptController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        if ($user->role != 0) {
+            return redirect('/logout'); 
+        }
+
         $cond = AppScript::where('id', '>', -1);
         $resources = $cond->get();
 
@@ -60,6 +65,10 @@ class ManageScriptController extends Controller
 
     public function getResources($typeId)
     {
+        $user = auth()->user();
+        if ($user->role != 0) {
+            return redirect('/logout'); 
+        }
 
         $cond = AppScript::where('type_id', $typeId);
         $resources = $cond->get();

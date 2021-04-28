@@ -9,14 +9,18 @@ $(document).ready(function() {
         $('#dlg_new_script').modal('show');
     })
 
-    // $('#btn_upload_file').click(e => {
-    //     var resource_id = $('#btn_upload_file').attr("data-id");
+    // $(".btn .btn-sm .btn-tumblr .btn_upload_file").click(e => {
+    //     console.log('clicked');
+        
+    //     var resource_id = $this.attr("data-id");
     //     $('#resource_id').val(resource_id);
         
     //     $('#dlg_update_script').modal('show');
     // })
 
-    $('#dataTable').on("click", '#btn_upload_file', function(event) {
+    $('#dataTable tbody').on("click", '.btn .btn-sm .btn-tumblr', function(event) {
+        console.log('clicked');
+        
         var resource_id = $(this).attr("data-id");
         $('#resource_id').val(resource_id);
 

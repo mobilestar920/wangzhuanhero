@@ -19,7 +19,6 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables/datatables.min.css') }}"/>
   <link href="{{ asset('css/jquery.dataTables.min.css') }}"  rel="stylesheet">
 
   <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>

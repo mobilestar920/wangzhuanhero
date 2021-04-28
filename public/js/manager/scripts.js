@@ -9,10 +9,11 @@ $(document).ready(function() {
         $('#dlg_new_script').modal('show');
     })
 
-    $('#btn_upload_file').click(e => {
-        var resource_id = $('#btn_upload_file').attr("data-id");
+    $('#dataTable').on("click", '.btn_upload_file', function(event) {
+        var resource_id = $(this).attr("data-id");
+        console.log(resource_id);
         $('#resource_id').val(resource_id);
-        
+
         $('#dlg_update_script').modal('show');
-    })
+    });
 })

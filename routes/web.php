@@ -59,7 +59,7 @@ Route::namespace('Manager')->group(function () {
 
     // Selling Status
     Route::get('/sellings', 'ManageShellingStatusController@index')->name('sellings');
-    Route::post('/news/new', 'ManageNewsController@createNews')->name('addNews');
+    Route::get('/sellings/{type}', 'ManageShellingStatusController@showDetail')->name('selling_detail');
 
 });
 

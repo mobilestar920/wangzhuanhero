@@ -27,6 +27,11 @@ class ManageShellingStatusController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        if ($user->role != 0) {
+            return redirect('/logout'); 
+        }
+
         return $this->getSellingStatus();
     }
 
@@ -57,5 +62,31 @@ class ManageShellingStatusController extends Controller
         }
 
         return view('manager.sellings', array('codes' => $codeList));
+    }
+
+    public function showDetail($type) {
+        $user = auth()->user();
+        if ($user->role != 0) {
+            return redirect('/logout'); 
+        }
+
+        $totals = VerifyCode::select(DB::raw('count(*) as count'), 'seller_id')->where('type', $type)->groupBy('seller_id')->orderBy('seller_id')->get();
+            
+        $userList = [];
+        foreach ($totals as $total) {
+            $seller = User::where('id', $total->seller_id)->first();
+            $total_count = $total->count;
+
+            $sells = VerifyCode::where('type', $type)->where('seller_id', $total->seller_id)->whereNotNull('customer_id')->count();
+        
+            $data = [];
+            $data['username'] = $seller->username;
+            $data['total'] = $total_count;
+            $data['selled'] = $sells;
+
+            array_push($userList, $data);
+        }
+
+        return view('manager.selling_seller', array('sellers' => $userList, 'type' => $type));
     }
 }

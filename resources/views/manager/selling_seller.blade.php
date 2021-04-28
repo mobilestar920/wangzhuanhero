@@ -8,32 +8,34 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>销售状态</h2>
+                        <h2>
+                            销售状态: 
+                            @if($type == 0) 
+                            7日
+                            @elseif($type == 1)
+                            15日
+                            @else
+                            30日
+                            @endif
+                        </h2>
                     </div>
                     <div class="card-body">
                         <table id="dataTable" class="table table-responsive-sm table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>类型</th>
+                                    <th>用户名</th>
                                     <th>激活数</th>
                                     <th>销售数量</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($codes as $type=>$code)
+                                @foreach($sellers as $i=>$data)
                                 <tr>
-                                    <td>{{ $type + 1 }}</td>
-                                    @if ($type == 0) 
-                                    <td>7日</td>
-                                    @elseif ($type == 1)
-                                    <td>15日</td>
-                                    @else
-                                    <td>30日</td>
-                                    @endif
-
-                                    <td>{{ $code['total'] }}</td>
-                                    <td>{{ $code['selled'] }}</td>
+                                    <td>{{ $i + 1 }}</td>
+                                    <td>{{ $data['username'] }}</td>
+                                    <td>{{ $data['total'] }}</td> 
+                                    <td>{{ $data['selled'] }}</td>                                  
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -51,11 +53,6 @@
 
 @section('javascript')
 
-<style type="text/css">
-	.table tr {
-        cursor: pointer;
-    }
-</style>
-<script type="text/javascript" src="{{ asset('js/manager/sellings.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/manager/selling_seller.js') }}"></script>
 
 @endsection

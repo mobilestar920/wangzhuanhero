@@ -37,12 +37,12 @@
                                     <td>
                                         <div class="peers mR-15">
                                             <div class="peer">
-                                                <button id="btn_edit_app" class="btn btn-sm btn-tumblr" type="button" style="background-color: blue;" data-id="{{ $app['id'] }}" data-name="{{ $app['name'] }}" data-version="{{ $app['version'] }}" data-package="{{ $app['package_name'] }}">
+                                                <button id="btn_edit_app" class="btn btn-sm btn-tumblr btn_edit_app" type="button" style="background-color: blue;" data-id="{{ $app['id'] }}" data-name="{{ $app['name'] }}" data-version="{{ $app['version'] }}" data-package="{{ $app['package_name'] }}">
                                                     <svg class="c-icon">
                                                         <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-pencil"></use>
                                                     </svg>
                                                 </button>
-                                                <button id="btn_delete_app" class="btn btn-sm btn-tumblr" type="button" style="background-color: red;" data-id="{{ $app['id'] }}">
+                                                <button id="btn_delete_app" class="btn btn-sm btn-tumblr btn_delete_app" type="button" style="background-color: red;" data-id="{{ $app['id'] }}">
                                                     <svg class="c-icon">
                                                         <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-trash"></use>
                                                     </svg>

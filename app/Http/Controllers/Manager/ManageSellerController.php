@@ -27,6 +27,11 @@ class ManageSellerController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        if ($user->role != 0) {
+            return redirect('/logout'); 
+        }
+
         return $this->getSellers();
     }
 
@@ -52,6 +57,11 @@ class ManageSellerController extends Controller
     }
 
     public function blockSeller(Request $request) {
+        $user = auth()->user();
+        if ($user->role != 0) {
+            return redirect('/logout'); 
+        }
+        
         $user_id = $request->user_id;
         $is_block = $request->is_block;
         $user = User::where('id', $user_id)->first();

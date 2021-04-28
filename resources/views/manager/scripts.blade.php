@@ -33,16 +33,16 @@
                                     <td>
                                         <div class="peers mR-15">
                                             <div class="peer">
-                                                <button id="btn_upload_file" class="btn btn-sm btn-tumblr" type="button" style="background-color: blue;" data-id="{{ $resource['id'] }}">
+                                                <span id="btn_upload_file" class="btn btn-sm btn-tumblr btn_upload_file"  style="background-color: blue;" data-id="{{ $resource['id'] }}">
                                                     <svg class="c-icon">
                                                         <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-data-transfer-up"></use>
                                                     </svg>
-                                                </button>
-                                                <button id="btn_download_file" class="btn btn-sm btn-tumblr" type="button" style="background-color: red;" data-id="{{ $resource['id'] }}">
+                                                </span>
+                                                <span id="btn_download_file" class="btn btn-sm btn-tumblr btn_download_file"  style="background-color: red;" data-id="{{ $resource['id'] }}">
                                                     <svg class="c-icon">
                                                         <use xlink:href="/assets/icons/coreui/free-symbol-defs.svg#cui-data-transfer-down"></use>
                                                     </svg>
-                                                </button>
+                                                </span>
                                             </div>
                                         </div>
                                     </td>
