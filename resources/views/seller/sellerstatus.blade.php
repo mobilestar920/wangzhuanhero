@@ -14,6 +14,7 @@
                         <table id="dataTable" class="table table-responsive-sm table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>类型</th>
                                     <th>激活数</th>
                                     <th>销售数量</th>
@@ -22,6 +23,7 @@
                             <tbody>
                                 @foreach($codes as $type=>$code)
                                 <tr>
+                                    <td>{{ $type + 1 }}</td>
                                     @if ($type == 0) 
                                     <td>7日</td>
                                     @elseif ($type == 1)

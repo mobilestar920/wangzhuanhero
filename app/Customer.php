@@ -12,6 +12,12 @@ class Customer extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'expire_at'
+    ];
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
