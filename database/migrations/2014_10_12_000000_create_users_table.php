@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 100);
             $table->integer('role')->default(1);
             $table->integer('is_blocked')->default(0);
+            $table->timestamp('expire_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

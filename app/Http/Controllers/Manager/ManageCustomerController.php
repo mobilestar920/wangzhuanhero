@@ -45,27 +45,15 @@ class ManageCustomerController extends Controller
             $createDate->setTimezone(new DateTimeZone('Asia/Shanghai'));
             $data['created_at'] = $createDate->format("Y/m/d H:i:s");
 
+            $expireDate = new DateTime($user->expire_at);
+            $expireDate->setTimezone(new DateTimeZone('Asia/Shanghai'));
+            $data['expire_at'] = $expireDate->format("Y/m/d H:i:s");
+
+
             $verification_code = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
             if ($verification_code == null) {
-                $expire_at = $user->created_at->addDays(1);
-                $expireDate = new DateTime($expire_at);
-                $expireDate->setTimezone(new DateTimeZone('Asia/Shanghai'));
-                $data['expire_at'] = $expireDate->format("Y/m/d H:i:s");
                 $data['verification_code'] = "";
             } else {
-                $availableDays = 0;
-                if ($verification_code->type == 0) {
-                    $availableDays = 7;
-                } else if ($verification_code->type == 1) {
-                    $availableDays = 15;
-                } else {
-                    $availableDays = 30;
-                }
-
-                $expire_at = $verification_code->updated_at->addDays($availableDays);
-                $expireDate = new DateTime($expire_at);
-                $expireDate->setTimezone(new DateTimeZone('Asia/Shanghai'));
-                $data['expire_at'] = $expireDate->format("Y/m/d H:i:s");
                 $data['verification_code'] = $verification_code->code;
             }
                         

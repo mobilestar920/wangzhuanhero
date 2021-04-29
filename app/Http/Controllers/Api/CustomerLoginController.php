@@ -37,8 +37,6 @@ class CustomerLoginController extends Controller
         $news_id    = $request->news_id;
 
         $current = Carbon::now();
-        $expire_at = $current;
-
         $user = Customer::where('phone', $phone)->first();
                 
         // User Request With Verify Code
@@ -90,13 +88,12 @@ class CustomerLoginController extends Controller
 
                 // User Info Update
                 $user->device_uuid = $imei;
+                $user->expire_at = $user->expire_at->addDays($availableDays);
                 $user->save();
 
                 // Assign New Verification Code
                 $verifyCode->customer_id = $user->id;
                 $verifyCode->save();
-
-                $expire_at = $verifyCode->updated_at->addDays($availableDays);
 
             // Verification already assigned
             } else {
@@ -115,7 +112,7 @@ class CustomerLoginController extends Controller
                 }
 
                 // Verification code expired
-                if ($current->addDays(-$availableDays) > $verifyCode->updated_at) {
+                if ($current > $user->expire_at) {
                     $verifyCode->is_deleted = 1;
                     $verifyCode->save();
 
@@ -123,9 +120,8 @@ class CustomerLoginController extends Controller
                 }
 
                 $user->device_uuid = $imei;
+                $user->expire_at = $user->expire_at->addDays($availableDays);
                 $user->save();
-
-                $expire_at = $verifyCode->updated_at->addDays($availableDays);
             }
 
         // User request without verification code
@@ -143,9 +139,11 @@ class CustomerLoginController extends Controller
                 }
 
                 // If user free and expired free trial
-                if ($current->addDays(-1) > $user->created_at) {
+                if ($current > $user->expire_at) {
                     return response()->json(['success' => false, 'message' => '使用期限已满。']);
                 }
+
+                $expire_at = $user->expire_at;
             } else {
                 $user_count = Customer::where('id', '>', '-1')->count() + 1;
                 $str_length = 5;
@@ -155,12 +153,11 @@ class CustomerLoginController extends Controller
                 $user->code = $code;
                 $user->phone = $phone;
                 $user->password = $password;
+                $user->expire_at = $current->addDays(1);
             }
 
             $user->device_uuid = $imei;
             $user->save();
-
-            $expire_at = $user->created_at->addDays(1);
         }
 
         $token = JWTAuth::fromUser($user, ['exp' => Carbon::now()->addDays(7)->timestamp]);
@@ -172,10 +169,10 @@ class CustomerLoginController extends Controller
         $data['phone'] = $user->phone;
 
         $data['updated_at'] = $user->updated_at;
-        $data['expire_at'] = $expire_at;
+        $data['expire_at'] = $user->expire_at;
         $data['note'] = $user->note;
 
-        $datetime1 = new DateTime($expire_at);
+        $datetime1 = new DateTime($user->expire_at);
         $datetime2 = new DateTime($current);
         $interval = $datetime2->diff($datetime1);
         $days = $interval->format('%a'); //now do whatever you like with $days
