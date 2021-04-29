@@ -120,7 +120,6 @@ class CustomerLoginController extends Controller
                 }
 
                 $user->device_uuid = $imei;
-                $user->expire_at = $user->expire_at->addDays($availableDays);
                 $user->save();
             }
 
