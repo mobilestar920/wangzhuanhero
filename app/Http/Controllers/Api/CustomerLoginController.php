@@ -74,6 +74,8 @@ class CustomerLoginController extends Controller
                         $codeUsing->save();
                     }
 
+                    $user->expire_at = $user->expire_at->addDays($availableDays);
+
                 // If User doesn't exist, register user
                 } else {
                     $user_count = Customer::where('id', '>', '-1')->count() + 1;
@@ -84,11 +86,11 @@ class CustomerLoginController extends Controller
                     $user->code = $code;
                     $user->phone = $phone;
                     $user->password = $password;
+                    $user->expire_at = $user->expire_at->addDays($availableDays + 1);
                 }
 
                 // User Info Update
                 $user->device_uuid = $imei;
-                $user->expire_at = $user->expire_at->addDays($availableDays);
                 $user->save();
 
                 // Assign New Verification Code
