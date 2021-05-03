@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
-    $('#dataTable').dataTable();
+    $('#dataTable').DataTable( {
+        responsive: true,
+        dom: 'Bfrtlp',
+        buttons: ['csv']
+    } );
 
     var locations = location.href.split('/');    
     if (locations.length == 5) {
@@ -16,6 +20,24 @@ $(document).ready(function() {
     $('#btn_code_generation').on('click', function() {
         $('#dlg_code_generation').modal('show');
     });
+
+    // $('#btn_export_excel').on('click', function() {
+    //     var codeType = $('#code_type').val();
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "http://192.168.101.2:8001/books/download",
+    //         dataType: "json",
+    //         data: {code_type: codeType, _token: $('meta[name="csrf-token"]').attr('content')},
+    //         success: function (response) {
+    //             console.log(response);
+    //             location.back();
+    //         },
+    //         error: function(error) {
+    //             console.log(error);
+    //             alert('Can not set data');
+    //         }
+    //     })
+    // });
 
     $('#btn_blocking').on('click', function() {
         var block_name = $('#block_name').val();

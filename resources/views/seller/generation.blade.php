@@ -20,6 +20,7 @@
                                 </select>
                             </div>
                             <button id="btn_code_generation" class="btn btn-danger" type="button" style="margin-bottom: 20px !important;">产生激活</button>
+                            <a id="btn_export_excel" class="btn btn-danger" href="{{ url('/books/download') }}" style="margin-left: 10px; margin-bottom: 20px !important;">下载Excel文件</a>
                         </form>
                         <table id="dataTable" class="table table-responsive-sm table-bordered table-striped table-sm">
                             <thead>
@@ -84,5 +85,12 @@
 @section('javascript')
 
 <script type="text/javascript" src="{{ asset('js/seller/generation.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ asset('js/datatable/pdfmake.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datatable/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datatable/buttons.print.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datatable/jszip.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datatable/vfs_fonts.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery/jquery_3.5.1.js') }}"></script> -->
 
 @endsection

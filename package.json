@@ -66,8 +66,12 @@
         "@popperjs/core": "^2.4.0",
         "chart.js": "^2.9.3",
         "cropperjs": "^1.5.7",
+        "datatables.net-bs4": "^1.10.24",
+        "datatables.net-buttons": "^1.7.0",
         "flag-icon-css": "^3.5.0",
         "font-awesome": "^4.7.0",
+        "jszip": "^3.6.0",
+        "pdfmake": "^0.1.71",
         "perfect-scrollbar": "1.5.0"
     },
     "engines": {

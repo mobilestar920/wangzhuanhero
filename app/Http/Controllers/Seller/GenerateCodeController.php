@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Seller;
 
+use App\Exports\VerifyCodeExport;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\VerifyCode;
@@ -10,6 +11,7 @@ use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GenerateCodeController extends Controller
 {
@@ -33,7 +35,8 @@ class GenerateCodeController extends Controller
         return $this->getVerificationCode(0);
     }
 
-    public function getVerificationCode($type) {
+    public function getVerificationCode($type)
+    {
         $user = auth()->user();
         $codes = VerifyCode::where('type', $type)->where('seller_id', $user->id)->whereNull('customer_id')->get();
         $codeList = [];
@@ -50,14 +53,15 @@ class GenerateCodeController extends Controller
         return view('seller.generation', array('codes' => $codeList));
     }
 
-    public function generateCode(Request $request) {
+    public function generateCode(Request $request)
+    {
         $user = auth()->user();
         if ($user->is_blocked == 1) {
             session()->flash('message', 'You are banned by admin');
             return redirect()->route('logout');
         }
 
-        
+
         $type = $request->code_type;
         $count = $request->code_count;
 
@@ -66,7 +70,7 @@ class GenerateCodeController extends Controller
             if ($n >= intval($count)) {
                 break;
             }
-            
+
             $rand_code = $this->generateRandomString();
             $code = VerifyCode::where('code', $rand_code)->first();
             if ($code == null) {
@@ -76,14 +80,15 @@ class GenerateCodeController extends Controller
                 $code->seller_id = $user->id;
                 $code->save();
 
-                $n ++;
+                $n++;
             }
         }
 
         return redirect('/generation');
     }
 
-    function generateRandomString($length = 8) {
+    function generateRandomString($length = 8)
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -91,5 +96,13 @@ class GenerateCodeController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    public function exportToExcel()
+    {
+        $user = auth()->user();
+        $export = new VerifyCodeExport($user->id);
+        Excel::store($export, 'verificationCodes.xlsx');
+        return Excel::download($export, 'verificationCodes.xlsx');
     }
 }

@@ -71,5 +71,7 @@ Route::namespace('Seller')->group(function () {
 
     // Selling Status
     Route::get('/seller/sellings', 'SellerSellingStatusController@index')->name('seller_sellings');
+
+    Route::get('books/download', 'GenerateCodeController@exportToExcel')->name('exportExcel');
     // Route::get('/generation/{type}', 'SellerSellingStatusController@getVerificationCode')->name('verifyCodesByType');
 });
