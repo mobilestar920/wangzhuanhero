@@ -28,8 +28,10 @@
                                     <td>7日</td>
                                     @elseif ($type == 1)
                                     <td>15日</td>
-                                    @else
+                                    @elseif($type == 2)
                                     <td>30日</td>
+                                    @else
+                                    <td>永久</td>
                                     @endif
 
                                     <td>{{ $code['total'] }}</td>

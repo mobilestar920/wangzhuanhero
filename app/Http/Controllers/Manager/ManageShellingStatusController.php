@@ -40,7 +40,7 @@ class ManageShellingStatusController extends Controller
         $totals = VerifyCode::select(DB::raw('count(*) as count'), 'type' )->groupBy('type')->orderBy('type')->get();
         
         $codeList = [];
-        for ($i=0; $i < 3; $i++) { 
+        for ($i=0; $i < 4; $i++) { 
             $data = [];
             $data['selled'] = 0;
             $data['total'] = 0;

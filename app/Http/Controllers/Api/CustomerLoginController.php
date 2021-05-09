@@ -54,8 +54,10 @@ class CustomerLoginController extends Controller
                 $availableDays = 7;
             } else if ($verifyCode->type == 1) {
                 $availableDays = 15;
-            } else {
+            } else if ($verifyCode->type == 2) {
                 $availableDays = 30;
+            } else {
+                $availableDays = 1000;
             }
 
             // New Verification Code
@@ -86,7 +88,7 @@ class CustomerLoginController extends Controller
                     $user->code = $code;
                     $user->phone = $phone;
                     $user->password = $password;
-                    $user->expire_at = $user->expire_at->addDays($availableDays + 1);
+                    $user->expire_at = $current->addDays($availableDays + 1);
                 }
 
                 // User Info Update

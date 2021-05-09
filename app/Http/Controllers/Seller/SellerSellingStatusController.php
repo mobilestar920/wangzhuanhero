@@ -36,7 +36,7 @@ class SellerSellingStatusController extends Controller
         $totals = VerifyCode::select(DB::raw('count(*) as count'), 'type' )->where('seller_id', $user->id)->groupBy('type')->orderBy('type')->get();
 
         $codeList = [];
-        for ($i=0; $i < 3; $i++) { 
+        for ($i=0; $i < 4; $i++) { 
             $data = [];
             $data['selled'] = 0;
             $data['total'] = 0;

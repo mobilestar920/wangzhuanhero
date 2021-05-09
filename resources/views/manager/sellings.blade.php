@@ -24,12 +24,14 @@
                                 @foreach($codes as $type=>$code)
                                 <tr>
                                     <td>{{ $type + 1 }}</td>
-                                    @if ($type == 0) 
+                                    @if ($type == 0)
                                     <td>7日</td>
                                     @elseif ($type == 1)
                                     <td>15日</td>
-                                    @else
+                                    @elseif($type == 2)
                                     <td>30日</td>
+                                    @else
+                                    <td>永久</td>
                                     @endif
 
                                     <td>{{ $code['total'] }}</td>
@@ -52,7 +54,7 @@
 @section('javascript')
 
 <style type="text/css">
-	.table tr {
+    .table tr {
         cursor: pointer;
     }
 </style>

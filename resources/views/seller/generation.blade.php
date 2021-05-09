@@ -17,6 +17,7 @@
                                     <option value="0">7日</option>
                                     <option value="1">15日</option>
                                     <option value="2">30日</option>
+                                    <option value="3">永久</option>
                                 </select>
                             </div>
                             <button id="btn_code_generation" class="btn btn-danger" type="button" style="margin-bottom: 20px !important;">产生激活</button>
@@ -63,6 +64,7 @@
                                 <option value="0" selected>7日</option>
                                 <option value="1">15日</option>
                                 <option value="2">30日</option>
+                                <option value="3">永久</option>
                             </select>
                         </div>
                         <div class="form-group">

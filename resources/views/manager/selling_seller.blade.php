@@ -14,8 +14,10 @@
                             7日
                             @elseif($type == 1)
                             15日
-                            @else
+                            @elseif($type == 2)
                             30日
+                            @else
+                            永久
                             @endif
                         </h2>
                     </div>
