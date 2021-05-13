@@ -135,18 +135,11 @@ class CustomerLoginController extends Controller
                     return response()->json(['success' => false, 'message' => '密码错误.']);
                 }
 
-                $codeUsing = VerifyCode::where('customer_id', $user->id)->orderBy('updated_at', 'desc')->first();
-                // If user has verification code
-                if ($codeUsing != null) {
-                    return response()->json(['success' => false, 'message' => '请输入验证码.']);
-                }
-
                 // If user free and expired free trial
                 if ($current > $user->expire_at) {
                     return response()->json(['success' => false, 'message' => '使用期限已满。']);
                 }
-
-                $expire_at = $user->expire_at;
+                
             } else {
                 $user_count = Customer::where('id', '>', '-1')->count() + 1;
                 $str_length = 5;
