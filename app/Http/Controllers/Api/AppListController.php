@@ -146,7 +146,7 @@ class AppListController extends Controller {
         $user = auth()->user();
         $device_uuid = $request->device_uuid;
 
-        if ($user->device_id != $device_uuid) {
+        if ($user->device_uuid != $device_uuid) {
             return response()->json(['success' => false, 'message' => '你得账号已被其他用户使用。']);
         }
 
